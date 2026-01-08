@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="{{ url_for('static', filename='js/workWithManu.js') }}"></script>
+    <title>Manu</title>
+</head>
+<body>
+    <h1>Меню</h1>
+    <form action="/pay" method="post" id="formaForPayFood">
+        <table border="">
+            <thead>
+                <tr>
+                    <th>дни недели</th>
+                    <th>завтраки</th>
+                    <th>цена завтрака</th>
+                    <th>количество оставшихся</th>
+                    <th>выберите чтобы купить</th>
+                </tr>
+            </thead>
+            <tbody id="menuTableZ">
+            </tbody>
+        </table>
+        <table border="">
+            <thead>
+                <tr>
+                    <th>дни недели</th>
+                    <th>обеды</th>
+                    <th>цена обеда</th>
+                    <th>количество оставшихся</th>
+                    <th>выберите чтобы купить</th>
+                </tr>
+            </thead>
+            <tbody id="menuTableO">
+            </tbody>
+        </table>
+        <button type="submit">купить</button>
+    </form>
+    <h1>вы</h1>
+    <h2>баланс</h2>
+        <p>{{ balans }}</p>
+        <form action="/getMany" method="post">
+            <input name="colMoney" type="number" required placeholder="введите сумму">
+            <button type="submit">пополнить</button>
+        </form>
+    <h2>покупки</h2>
+        {% for i in get_flashed_messages() %}
+        <p class="flash" >{{i}}</p>
+        {% endfor %}
+        <form action="/noteOnReceivingFood" method="post" id="">
+            {% for i in payment %}
+            <ul>
+                <li>
+                    {{i[0]}}
+                    <input name="{{ i[1] }}" type="checkbox" value="on">
+                    {{i[2]}}
+                </li>
+            </ul>
+            {% endfor %}
+            <button type="submit">нажмите для подтверждения того что вы забрали заказ</button>
+        </form>
+    <h2>алергены</h2>
+        <form action="/addAlergens" method="post">
+            <input name="alergens" type="text" required placeholder="введите то на что у вас аллергия">
+            <button type="submit">добавить</button>
+        </form>
+        <ul>
+            {% for i in allergens %}
+            <li>{{i}}</li>
+            {% endfor %}
+        </ul>
+    <a href="{{ comments }}">комментарии</a>
+</body>
+</html>
