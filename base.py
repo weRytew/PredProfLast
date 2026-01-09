@@ -167,16 +167,16 @@ def newWeek():
     dataBase = sqlite3.connect("mydb.sql")
     cursor = dataBase.cursor()
     cursor.execute("SELECT * FROM chtoWidano")
-    cursor.execute(f"UPDATE chtoWidano SET Z = ? AND O = ?", (0, 0))
+    cursor.execute(f"UPDATE chtoWidano SET Z = ?, O = ?", (0, 0))
     cursor.execute("SELECT * FROM eaters")
     cursor.execute(f"UPDATE eaters SET attendance = ?", ("",))
     cursor.execute("SELECT * FROM manuOnweek")
     data = cursor.fetchall()
     for i in range(len(data)):
         cursor.execute(f"UPDATE manuOnweek SET col = ? WHERE day = ? and meal = ?", (data[i][5], data[i][0], data[i][1]))
-    startPrib()
     dataBase.commit()
     dataBase.close()
+    startPrib()
 
 def addPurchaseRequests(who, value):
     dataBase = sqlite3.connect("mydb.sql")
@@ -197,11 +197,6 @@ def cengePurchaseRequests(ID):
 def startPrib():
     dataBase = sqlite3.connect("mydb.sql")
     cursor = dataBase.cursor()
-    cursor.execute("SELECT * FROM pribForWeek")
-    data = cursor.fetchall()
-    if data == []:
-        cursor.execute("INSERT INTO pribForWeek (prib, opl) VALUES (?, ?)",
-                       (0, ""))
     allFood = getData("manuOnweek")
     prib = 0
     for i in allFood:
@@ -223,9 +218,13 @@ def Start():
     cursor.execute("""CREATE TABLE IF NOT EXISTS pribForWeek (prib INTEGER, opl TEXT)""")
     cursor.execute("SELECT * FROM chtoWidano")
     data = cursor.fetchall()
-    startPrib()
     if data == []:
         cursor.execute("INSERT INTO chtoWidano (Z, O) VALUES (?, ?)",
                        (0, 0))
+    cursor.execute("SELECT * FROM pribForWeek")
+    data2 = cursor.fetchall()
+    if data2 == []:
+        cursor.execute("INSERT INTO pribForWeek (prib, opl) VALUES (?, ?)",
+                       (0, ""))
     dataBase.commit()
     dataBase.close()
