@@ -29,3 +29,5 @@
 
 вот что получилось у меня [eblan228.pythonanywhere.com](https://eblan228.pythonanywhere.com/) (за ссылку и код простите пожалуйста) 
 
+ссылка на видео https://youtu.be/BXRjLlIRE-4
+
