@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+form {
+    max-width: 900px;
+    margin: 0 auto;
+}
+table {
+    width: 100%;
+    margin: 5px 0;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+thead {
+    background: #3498db;
+    color: white;
+}
+th {
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: bold;
+}
+tbody td {
+    padding: 12px 10px;
+    text-align: center;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+tbody tr:hover {
+    background: #ecf0f1;
+}
+
+button {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 30px auto;
+}
+
+button:hover {
+    background: #219a52;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.2);
+    margin: 0 10px;
+}
+
+@media (max-width: 768px) {
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px 5px;
+    }
+}
+
+.manu, .you, .balanse, .whatPay, .alergens, .history {
+    max-width: 800px;
+    margin: 10px auto;
+    padding: 5px;
+}
+
+#ErrorText {
+    background: #e74c3c;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: none;
+}
+
+.error {
+    max-width: 800px;
+    margin: 5px auto;
+    padding: 5px;
+}
+
+.balanse {
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 5px;
+    text-align: center;
+}
+
+.inp {
+    width: 100%;
+    max-width: 250px;
+    margin: 15px auto;
+    display: block;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.inp:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    margin: 10px auto;
+    max-width: 400px;
+}
+
+.errorMasseg {
+    background: #f00;
+    color: #fff;
+    padding: 5px 5px;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.nothing {
+    background: #c5e2ff91;
+    color: #595959;
+    padding: 5px 5px;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+body > div {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+li {
+    background: #f8f9fa;
+    margin: 8px 0;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.whatPay ul li {
+    background: #e8f5e8;
+    border-left-color: #27ae60;
+}
+
+.whatPay input[type="checkbox"] {
+    transform: scale(1.3);
+    accent-color: #27ae60;
+}
+
+.alergens ul li {
+    background: #fff3cd;
+    border-left-color: #ffc107;
+}
+
+li:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+    transition: all 0.2s;
+}
