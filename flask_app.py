@@ -497,7 +497,7 @@ def otchot():
     NV[0] = NV[1] - ZO[0] - ZO[1]
 
     filePath = os.path.join('data', 'otchet.txt')
-
+    base.startPrib()
     with open(filePath, 'w', encoding='utf-8') as file:
         file.write(f"количество выданных завтраков: {ZO[0]}\n")
         file.write(f"количество выданных обедов: {ZO[1]}\n")
@@ -520,4 +520,5 @@ def whatDoInStart():
 
 if __name__ == '__main__':
     whatDoInStart()
+
     app.run(host='0.0.0.0')
