@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/mda.css') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/ion.png') }}">
+</head>
+<body>
+    <h1>Комментарии</h1>
+    <p id="status"></p>
+    <form action="/comments" method="post">
+         <input name="text" type="text" placeholder="введите текст комментария">
+        <button type="submit" id="addComments">оставить комментарий</button>
+    </form>
+    {% for i in comments %}
+    <li>{{ i[0] }}: {{ i[1] }}</li>
+    {% endfor %}
+</body>
+</html>

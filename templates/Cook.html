@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cook</title>
+    <script src="{{ url_for('static', filename='js/cook.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/mda.css') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/ion.png') }}">
+</head>
+<body>
+    <h1>Повар</h1>
+    <h2>внесение заявок на закупку продуктов</h2>
+    <form action="/purchaseRequests" method="post" id="textForm">
+        <textarea name="applications" id="applications" placeholder="введите текст заявки"></textarea>
+        <button type="submit" id="sendApplications">отправить</button>
+    </form>
+    <table>
+        <caption>количество выданных завтраков и обедов</caption>
+        <thead>
+            <tr>
+                <th>завтраки</th>
+                <th>обеды</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>{{ZO[0]}}</th>
+                <th>{{ZO[1]}}</th>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <caption>не выданные завтраки и обеды и сколько было приготовлено</caption>
+        <thead>
+            <tr>
+                <th>не выдано</th>
+                <th>всего приготовлено</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>{{NV[0]}}</th>
+                <th>{{NV[1]}}</th>
+            </tr>
+        </tbody>
+    </table>
+    <h2>заявки на закупки</h2>
+    {% for i in application %}
+    <ul>
+        <li>{{i[0]}}: {{i[1]}} - {{i[2]}}</li>
+    </ul>
+    {% endfor %}
+    <p id="ErrorText"></p>
+    <form id="addFood" action="/addFood1" method="post" autocomplete="off">
+        <table id="forAddFood">
+            <thead>
+                <tr>
+                    <th>день недели</th>
+                    <th>завтрак/обед</th>
+                    <th>блюда</th>
+                    <th>кол штук</th>
+                    <th>себе стоимость</th>
+                    <th>стоимась</th>
+                    <th>удалить</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>понедельник</th>
+                    <th>
+                        <input type="radio" id="MondayZorOZ" name="MondayZorO" value="Z">
+                        <input type="radio" id="MondayZorOO" name="MondayZorO" value="O">
+                    </th>
+                    <th>
+                        <input id="MondayMeal" name="MondayMeal" type="text">
+                    </th>
+                    <th>
+                        <input id="MondayCol" name="MondayCol" type="number">
+                    </th>
+                    <th>
+                        <input id="MondayFirstCost" name="MondayFirstCost" type="number">
+                    </th>
+                    <th>
+                        <input id="MondayCost" name="MondayCost" type="number">
+                    </th>
+                    <th>
+                        <input id="MondayZorOD" name="MondayZorOD" type="radio" value="D">
+                    </th>
+                </tr>
+                <tr>
+                    <th>вторник</th>
+                    <th>
+                        <input type="radio" id="TuesdayZorOZ" name="TuesdayZorO" value="Z">
+                        <input type="radio" id="TuesdayZorOO" name="TuesdayZorO" value="O">
+                    </th>
+                    <th>
+                        <input id="TuesdayMeal" name="TuesdayMeal" type="text">
+                    </th>
+                    <th>
+                        <input id="TuesdayCol" name="TuesdayCol" type="number">
+                    </th>
+                    <th>
+                        <input id="TuesdayFirstCost" name="TuesdayFirstCost" type="number">
+                    </th>
+                    <th>
+                        <input id="TuesdayCost" name="TuesdayCost" type="number">
+                    </th>
+                    <th>
+                        <input id="TuesdayZorOD" name="TuesdayZorOD" type="radio" value="D">
+                    </th>
+                </tr>
+                <tr>
+                    <th>среда</th>
+                    <th>
+                        <input type="radio" id="WednesdayZorOZ" name="WednesdayZorO" value="Z">
+                        <input type="radio" id="WednesdayZorOO" name="WednesdayZorO" value="O">
+                    </th>
+                    <th>
+                        <input id="WednesdayMeal" name="WednesdayMeal" type="text">
+                    </th>
+                    <th>
+                        <input id="WednesdayCol" name="WednesdayCol" type="number">
+                    </th>
+                    <th>
+                        <input id="WednesdayFirstCost" name="WednesdayFirstCost" type="number">
+                    </th>
+                    <th>
+                        <input id="WednesdayCost" name="WednesdayCost" type="number">
+                    </th>
+                    <th>
+                        <input id="WednesdayZorOD" name="WednesdayZorOD" type="radio" value="D">
+                    </th>
+                </tr>
+                <tr>
+                    <th>четверг</th>
+                    <th>
+                        <input type="radio" id="ThursdayZorOZ" name="ThursdayZorO" value="Z">
+                        <input type="radio" id="ThursdayZorOO" name="ThursdayZorO" value="O">
+                    </th>
+                    <th>
+                        <input id="ThursdayMeal" name="ThursdayMeal" type="text">
+                    </th>
+                    <th>
+                        <input id="ThursdayCol" name="ThursdayCol" type="number">
+                    </th>
+                    <th>
+                        <input id="ThursdayFirstCost" name="ThursdayFirstCost" type="number">
+                    </th>
+                    <th>
+                        <input id="ThursdayCost"  name="ThursdayCost" type="number">
+                    </th>
+                    <th>
+                        <input id="ThursdayZorOD" name="ThursdayZorOD" type="radio" value="D">
+                    </th>
+                </tr>
+                <tr>
+                    <th>пятница</th>
+                    <th>
+                        <input type="radio" id="FridayZorOZ" name="FridayZorO" value="Z">
+                        <input type="radio" id="FridayZorOO" name="FridayZorO" value="O">
+                    </th>
+                    <th>
+                        <input id="FridayMeal" name="FridayMeal" type="text">
+                    </th>
+                    <th>
+                        <input id="FridayCol" name="FridayCol" type="number">
+                    </th>
+                    <th>
+                        <input id="FridayFirstCost" name="FridayFirstCost" type="number">
+                    </th>
+                    <th>
+                        <input id="FridayCost" name="FridayCost" type="number">
+                    </th>
+                    <th>
+                        <input  id="FridayZorOD" name="FridayZorOD" type="radio" value="D">
+                    </th>
+                </tr>
+                <tr>
+                    <th>суббота</th>
+                    <th>
+                        <input type="radio" id="SaturdayZorOZ" name="SaturdayZorO" value="Z">
+                        <input type="radio" id="SaturdayZorOO" name="SaturdayZorO" value="O">
+                    </th>
+                    <th>
+                        <input id="SaturdayMeal" name="SaturdayMeal" type="text">
+                    </th>
+                    <th>
+                        <input id="SaturdayCol" name="SaturdayCol" type="number">
+                    </th>
+                    <th>
+                        <input id="SaturdayFirstCost" name="SaturdayFirstCost" type="number">
+                    </th>
+                    <th>
+                        <input id="SaturdayCost" name="SaturdayCost" type="number">
+                    </th>
+                    <th>
+                        <input id="SaturdayZorOD" name="SaturdayZorOD" type="radio" value="D">
+                    </th>
+                </tr>
+                <tr>
+                    <th>воскресенье</th>
+                    <th>
+                        <input type="radio" id="SundayZorOZ" name="SundayZorO" value="Z">
+                        <input type="radio" id="SundayZorOO" name="SundayZorO" value="O">
+                    </th>
+                    <th>
+                        <input id="SundayMeal" name="SundayMeal" type="text">
+                    </th>
+                    <th>
+                        <input id="SundayCol" name="SundayCol" type="number">
+                    </th>
+                    <th>
+                        <input id="SundayFirstCost" name="SundayFirstCost" type="number">
+                    </th>
+                    <th>
+                        <input id="SundayCost" name="SundayCost" type="number">
+                    </th>
+                    <th>
+                        <input id="SundayZorOD" name="SundayZorOD" type="radio" value="D">
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit" id="addorDelFood">добавить удалить</button>
+    </form>
+</body>
+</html>

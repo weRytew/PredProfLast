@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/mda.css') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/ion.png') }}">
+</head>
+<body>
+    <H1>Админ</H1>
+    <h2>просмотр статистики оплат и посещаемости</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>день недели</th>
+                <th>посещаемость</th>
+                <th>оплаты</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in AttendAndPaymant %}
+            <tr>
+                <th>{{ i[0] }}</th>
+                <th>{{ i[1] }}</th>
+                <th>{{ i[2] }}</th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>заявки на закупки</h2>
+    <form action="/gerte" method="post">
+        <ul>
+            {% for i in application %}
+            <li>{{i[0]}}: {{i[1]}} - {{i[2]}} <input name="{{ i[3] }}" type="checkbox"></li>
+            {% endfor %}
+        </ul>
+        <button type="submit">одобрить все выбранное</button>
+    </form>
+    <h2>отчеты о работе столовой за неделю</h2>
+    <a href="/createOtchet">Скачать отчёт</a>
+
+</body>
+</html>

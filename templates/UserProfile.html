@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="{{ url_for('static', filename='js/workWithManu.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/mda.css') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/ion.png') }}">
+    <title>profile</title>
+</head>
+<body>
+    <h1>Меню</h1>
+    <div class="manu">
+        <form action="/pay" method="post" id="formaForPayFood">
+            <table border="">
+                <thead>
+                    <tr>
+                        <th>дни недели</th>
+                        <th>завтраки</th>
+                        <th>цена завтрака</th>
+                        <th>количество оставшихся</th>
+                        <th>выберите чтобы купить</th>
+                    </tr>
+                </thead>
+                <tbody id="menuTableZ">
+                </tbody>
+            </table>
+            <table border="">
+                <thead>
+                    <tr>
+                        <th>дни недели</th>
+                        <th>обеды</th>
+                        <th>цена обеда</th>
+                        <th>количество оставшихся</th>
+                        <th>выберите чтобы купить</th>
+                    </tr>
+                </thead>
+                <tbody id="menuTableO">
+                </tbody>
+            </table>
+            <button type="submit">купить</button>
+        </form>
+        <h2>купить все блюда из меню</h2>
+        <h3>цена</h3>
+        <p>{{ abonimentCost }}</p>
+        <form action="/payaboniment" method="post" id="formaForPayAboniment">
+            <button type="submit">купить абонимент на неделю</button>
+        </form>
+    </div>
+    <div class="error">
+        {% for i in get_flashed_messages() %}
+            <p class="flash errorMasseg">{{i}}</p>
+        {% endfor %}
+    </div>
+    <h1>вы</h1>
+    <div class="you">
+        <h2>баланс</h2>
+        <div class="balanse">
+            <p>{{ balans }}</p>
+            <form action="/getMany" method="post">
+                <input class="inp" name="colMoney" type="number" required placeholder="введите сумму">
+                <button type="submit">пополнить</button>
+            </form>
+        </div>
+        <h2>покупки</h2>
+        <div class="whatPay">
+            <p class="nothing" >{{ nothing }}</p>
+            <form action="/noteOnReceivingFood" method="post" id="">
+                {% for i in payment %}
+                <ul>
+                    <li>
+                        {{i[0]}}
+                        <input name="{{ i[1] }}" type="checkbox" value="on">
+                        {{i[2]}}
+                    </li>
+                </ul>
+                {% endfor %}
+                <button type="submit">нажмите для подтверждения того что вы забрали заказ</button>
+            </form>
+        </div>
+        <h2>алергены</h2>
+        <div class="alergens">
+            <form action="/addAlergens" method="post">
+                <input class="inp" name="alergens" type="text" required placeholder="введите то на что у вас аллергия">
+                <button type="submit">добавить</button>
+            </form>
+            <ul>
+                {% for i in allergens %}
+                <li>{{i}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <h2>История покупок</h2>
+        <div class="history">
+            {% for i in history %}
+            <ul>
+                <li>{{i}}</li>
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+    <a href="{{ comments }}">комментарии</a>
+</body>
+</html>
