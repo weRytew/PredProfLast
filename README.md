@@ -12,5 +12,7 @@
 6. Откройте браузер и в адресной строке напишите 0.0.0.0:5000
 7. !!! Юху все работает !!!
 
-ссылка на видео [https://youtu.be/BXRjLlIRE-4](https://youtu.be/HELEEU3igBo)
+ссылка на видео: 
+[https://youtu.be/BXRjLlIRE-4](https://youtu.be/HELEEU3igBo)
+[https://m.vkvideo.ru/video815276313_456239018?sh=4](https://m.vkvideo.ru/video815276313_456239018?sh=4)
 
