@@ -6,7 +6,7 @@ import datetime
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "defrtyres4j43ms"
-app.permanent_session_lifetime = datetime.timedelta(minutes=30)
+app.permanent_session_lifetime = datetime.timedelta(minutes=1440)
 scheduler = APScheduler()
 
 def NewWeek():
@@ -523,4 +523,5 @@ def whatDoInStart():
 
 if __name__ == '__main__':
     whatDoInStart()
+
     app.run(host='0.0.0.0')
